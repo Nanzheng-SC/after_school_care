@@ -1,0 +1,48 @@
+
+
+.pageWrapper {
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.modalBackdrop {
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modalContent {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.95);
+  }
+  to { 
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.formInputFocus:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.radioCustom:checked + .radioLabel {
+  background-color: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.radioLabel {
+  transition: all 0.2s ease-in-out;
+}
+

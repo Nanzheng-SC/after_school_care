@@ -1,0 +1,56 @@
+
+
+.pageWrapper {
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.sidebarTransition {
+  transition: width 0.3s ease-in-out;
+}
+
+.cardHover:hover {
+  transform: translateY(-2px);
+  transition: all 0.2s ease-in-out;
+}
+
+.navItemActive {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-right: 3px solid #2563eb;
+}
+
+.searchFocus:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.filterDropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.filterDropdown.show {
+  max-height: 300px;
+}
+
+.tableRow:hover {
+  background-color: #f8fafc;
+}
+
+.sortable:hover {
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.sortIcon {
+  opacity: 0.3;
+  transition: opacity 0.2s;
+}
+
+.sortActive .sortIcon {
+  opacity: 1;
+}
+

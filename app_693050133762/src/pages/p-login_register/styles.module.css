@@ -1,0 +1,57 @@
+
+
+.pageWrapper {
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.formInputFocus:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.tabActive {
+  background-color: #2563eb;
+  color: white;
+}
+
+.tabInactive {
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.tabInactive:hover {
+  background-color: #e2e8f0;
+}
+
+.slideEnter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.slideEnterActive {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.slideExit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slideExitActive {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.gradientBg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.logoGlow {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+}
+
