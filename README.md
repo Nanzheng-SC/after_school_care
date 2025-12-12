@@ -287,8 +287,8 @@
 
 如有问题或建议，请通过以下方式联系：
 
-- 邮箱：[your-email@example.com]
-- GitHub：[your-github-username]
+- 邮箱：[738632006@qq.com]
+- GitHub：[Nanzheng-SC](https://github.com/Nanzheng-SC)
 
 ---
 
