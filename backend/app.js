@@ -11,6 +11,8 @@ const youthRoutes = require('./routes/youth');
 const teacherRoutes = require('./routes/teacher');
 const adminRoutes = require('./routes/admin');
 const evaluationRoutes = require('./routes/evaluation');
+const courseRoutes = require('./routes/course');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -34,6 +36,7 @@ app.use('/api/youth', youthRoutes);
 app.use('/api/teacher', teacherRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/evaluation', evaluationRoutes);
+app.use('/api/course', courseRoutes);
 
 // 404 处理
 app.use((req, res, next) => {
