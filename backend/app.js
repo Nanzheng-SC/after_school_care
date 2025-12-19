@@ -12,6 +12,7 @@ const teacherRoutes = require('./routes/teacher');
 const adminRoutes = require('./routes/admin');
 const evaluationRoutes = require('./routes/evaluation');
 const courseRoutes = require('./routes/course');
+const parentRoutes = require('./routes/parent');
 
 
 const app = express();
@@ -37,6 +38,7 @@ app.use('/api/teacher', teacherRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/evaluation', evaluationRoutes);
 app.use('/api/course', courseRoutes);
+app.use('/api/parent', parentRoutes);
 
 // 404 处理
 app.use((req, res, next) => {

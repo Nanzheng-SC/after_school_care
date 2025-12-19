@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { Teacher, Evaluation } = require('../models');
+const sequelize = require('../config/db');
+const { Teacher, Evaluation, Course, Youth } = require('../models');
 
 // 教师查看个人信息
 // GET /api/teacher/:teacherId
@@ -16,6 +17,46 @@ router.get('/:teacherId/evaluations', async (req, res) => {
     where: { teacher_id: req.params.teacherId }
   });
   res.json(list);
+});
+
+// 教师查看自己的课程
+// GET /api/teacher/:teacherId/courses
+router.get('/:teacherId/courses', async (req, res) => {
+  try {
+    const { teacherId } = req.params;
+    const teacher = await Teacher.findByPk(teacherId, {
+      include: [{ model: Course, as: 'Courses' }]
+    });
+    if (!teacher) {
+      return res.status(404).json({ message: '教师不存在' });
+    }
+    res.json(teacher.Courses);
+  } catch (error) {
+    res.status(500).json({ message: '获取课程失败', error: error.message });
+  }
+});
+
+// 教师查看匹配的学生
+// GET /api/teacher/:teacherId/student-matches
+router.get('/:teacherId/student-matches', async (req, res) => {
+  try {
+    const { teacherId } = req.params;
+    const result = await sequelize.query(
+      `
+      SELECT tm.*, y.name AS youth_name, y.age, y.interest
+      FROM teacher_matching tm
+      JOIN youth y ON tm.youth_id = y.youth_id
+      WHERE tm.teacher_id = ?
+      `,
+      {
+        replacements: [teacherId],
+        type: sequelize.QueryTypes.SELECT
+      }
+    );
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({ message: '获取匹配学生失败', error: error.message });
+  }
 });
 
 module.exports = router;
