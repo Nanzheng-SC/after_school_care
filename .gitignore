@@ -35,6 +35,7 @@ lerna-debug.log*
 
 # Build files
 dist/
+dist-ssr
 build/
 
 # Test coverage
@@ -46,5 +47,6 @@ coverage/
 *.temp
 .cache/
 
+# Project specific
 图/
 文书/

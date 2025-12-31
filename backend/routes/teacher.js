@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../config/db');
-const { Teacher, Evaluation, Course, Youth } = require('../models');
+const { Teacher, Evaluation, Course, Youth, Neighborhood } = require('../models');
 
 // 教师查看个人信息
 // GET /api/teacher/:teacherId
@@ -25,12 +25,25 @@ router.get('/:teacherId/courses', async (req, res) => {
   try {
     const { teacherId } = req.params;
     const teacher = await Teacher.findByPk(teacherId, {
-      include: [{ model: Course, as: 'Courses' }]
+      include: [
+        {
+          model: Course, 
+          as: 'Courses',
+          include: [{ model: Neighborhood, attributes: ['address'], as: 'Neighborhood' }]
+        }
+      ]
     });
     if (!teacher) {
       return res.status(404).json({ message: '教师不存在' });
     }
-    res.json(teacher.Courses);
+    
+    // 转换数据格式，添加location字段
+    const formattedCourses = teacher.Courses.map(course => ({
+      ...course.toJSON(),
+      location: course.Neighborhood ? course.Neighborhood.address : '未知地点'
+    }));
+    
+    res.json(formattedCourses);
   } catch (error) {
     res.status(500).json({ message: '获取课程失败', error: error.message });
   }

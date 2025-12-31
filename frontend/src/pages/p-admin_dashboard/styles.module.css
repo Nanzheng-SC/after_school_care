@@ -1,0 +1,43 @@
+
+
+.pageWrapper {
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.sidebarTransition {
+  transition: width 0.3s ease-in-out;
+}
+
+.cardHover:hover {
+  transform: translateY(-2px);
+  transition: all 0.2s ease-in-out;
+}
+
+.navItemActive {
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-right: 3px solid #2563eb;
+}
+
+.searchFocus:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.statCard {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid #e2e8f0;
+}
+
+.actionCard {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.actionCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+

@@ -5,6 +5,8 @@ const Course = require('./Course');
 const Evaluation = require('./Evaluation');
 const TeacherMatching = require('./TeacherMatching');
 const Neighborhood = require('./Neighborhood');
+const SystemParameter = require('./SystemParameter');
+const CourseSelection = require('./CourseSelection');
 
 // Neighborhood associations
 Neighborhood.hasMany(Course, { foreignKey: 'neighborhood_id' });
@@ -40,4 +42,6 @@ module.exports = {
   Evaluation,
   TeacherMatching,
   Neighborhood,
+  SystemParameter,
+  CourseSelection
 };

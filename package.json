@@ -1,0 +1,26 @@
+{
+  "name": "after-school-care-system",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "dev:frontend": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "build:frontend": "npm run build --workspace=frontend",
+    "start:backend": "npm run start --workspace=backend"
+  },
+  "description": "青少年课后托管系统 - 前后端一体化项目",
+  "keywords": [
+    "after-school-care",
+    "education",
+    "react",
+    "nodejs",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Course } = require('../models');
+const { Course, Teacher, Neighborhood } = require('../models');
 
 /**
  * 查询所有课程（家长 / 教师 / 管理员）
@@ -8,8 +8,23 @@ const { Course } = require('../models');
  */
 router.get('/', async (req, res) => {
   try {
-    const courses = await Course.findAll();
-    res.json(courses);
+    const courses = await Course.findAll({
+      include: [
+        { model: Teacher, attributes: ['name'], as: 'Teacher' },
+        { model: Neighborhood, attributes: ['address'], as: 'Neighborhood' }
+      ]
+    });
+    
+    // 转换数据格式，添加teacher_name和location字段
+    const formattedCourses = courses.map(course => {
+      return {
+        ...course.toJSON(),
+        teacher_name: course.Teacher ? course.Teacher.name : '未知老师',
+        location: course.Neighborhood ? course.Neighborhood.address : '未知地点'
+      };
+    });
+    
+    res.json(formattedCourses);
   } catch (err) {
     res.status(500).json({
       message: '查询课程失败',

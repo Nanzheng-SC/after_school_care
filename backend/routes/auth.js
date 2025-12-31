@@ -12,10 +12,10 @@ router.post('/login', async (req, res) => {
   const { role, account } = req.body;
 
   try {
-    // 家长登录（用手机号）
+    // 家长登录（用家长ID）
     if (role === 'parent') {
       const parent = await Parent.findOne({
-        where: { phone: account }
+        where: { parent_id: account }
       });
 
       if (!parent) {
